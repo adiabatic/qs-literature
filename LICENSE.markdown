@@ -3,7 +3,7 @@
 Everything in this repository is available under the MIT License (reprinted below), except:
 
 - alegreya-*.ttf (see OFL.alegreya.txt)
-- kingsley.ttf (status unknown)
+- kingsley.ttf (freeware; by Stephen Bartok (based on work by “tinyalien”), Oliver Langan (Unicode), and Nathan Sharfi (size adjustments))
 
 ## The MIT License
 
