@@ -1,0 +1,67 @@
+@font-face {
+    font-family: "Kingsley";
+    src: url(kingsley.otf);
+}
+
+@font-face {
+    font-family: Alegreya;
+    src: url(alegreya-bolditalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Alegreya;
+    src: url(alegreya-italic.ttf);
+    font-style: italic;
+}
+
+html {
+    font: 14pt/2 Kingsley, sans-serif;
+}
+
+body {
+    text-rendering: optimizeLegibility; /* doesn’t work when applied to the html element */
+}
+
+body > * {
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 1.11rem; /* 20/18 */
+    line-height: 1.5;
+    color: #859900; /* green */
+
+    margin-bottom: .25em;
+    padding: 0;
+    text-align: center;
+}
+
+body > h1 {
+    font-size: 1.33rem; /* 24/18 */
+    margin-bottom: 2rem;
+}
+
+p {
+    margin: 1rem auto;
+}
+
+p + p {
+    text-indent: .5in;
+}
+
+blockquote {
+    text-align: center;
+}
+
+h1.title, 
+h2.author {
+    font-family: Alegreya;
+    font-style: italic;
+}
+
+h1.title {
+    font-weight: bold;
+}
