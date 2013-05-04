@@ -16,8 +16,13 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family: Putterbubble;
+    src: url(Putterbubble-Regular.otf);
+}
+
 html {
-    font: 14pt/2 Kingsley, sans-serif;
+    font: 14pt/2 Putterbubble "Open Sans", sans-serif;
 }
 
 body {
