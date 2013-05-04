@@ -10,3 +10,8 @@ body > * {
     max-width: 30rem;
     margin: 0 auto;
 }
+
+h1.title,
+h2.author {
+    display: none;
+}
