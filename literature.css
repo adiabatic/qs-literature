@@ -3,19 +3,6 @@
     src: url(kingsley.otf);
 }
 
-@font-face {
-    font-family: Alegreya;
-    src: url(alegreya-bolditalic.ttf);
-    font-weight: bold;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: Alegreya;
-    src: url(alegreya-italic.ttf);
-    font-style: italic;
-}
-
 html {
     font: 14pt/2 Kingsley, sans-serif;
 }
@@ -54,14 +41,4 @@ p + p {
 
 blockquote {
     text-align: center;
-}
-
-h1.title, 
-h2.author {
-    font-family: Alegreya;
-    font-style: italic;
-}
-
-h1.title {
-    font-weight: bold;
 }
