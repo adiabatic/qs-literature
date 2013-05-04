@@ -21,7 +21,7 @@ html {
 }
 
 body {
-    text-rendering: optimizeLegibility; /* doesn’t work when applied to the html element */
+    text-rendering: optimizeLegibility; /* doesn’t work in iBooks when applied to the html element */
 }
 
 body > * {
