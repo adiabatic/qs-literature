@@ -1,0 +1,12 @@
+html {
+    font-size: 18pt;
+    line-height: 2;
+    
+    background: #111;
+    color: #93a1a1; /* base1 */
+}
+
+body > * {
+    max-width: 30rem;
+    margin: 0 auto;
+}
