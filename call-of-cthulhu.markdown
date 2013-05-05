@@ -1,5 +1,6 @@
 % The Call of Cthulhu, Quikscript Edition
 % H. P. Lovecraft
+% 1926
 
 # (       · · ·,  ·)
 

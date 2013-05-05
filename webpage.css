@@ -12,6 +12,7 @@ body > * {
 }
 
 h1.title,
-h2.author {
+h2.author,
+h3.date {
     display: none;
 }
