@@ -3,48 +3,48 @@
 import xml.etree.ElementTree as ET
 import os
 from os.path import join
-newnames = [
-    u"The Call of Cthulhu",
-    u"1. The Horror in Clay",
-    u"2. The Tale of Inspector Legrasse",
-    u"3. The Madness from the Sea"
-]
-
-DIR = 'call-of-cthulhu.d'
-
-NAVFILE = join(DIR, 'nav.xhtml')
-TITLEPAGE = join(DIR, 'title_page.xhtml')
-OPF = join(DIR, 'content.opf')
 
 
-def fix_nav_file():
+
+class WorkInfo(object):
+    def __init__(self, prefix):
+        self.prefix = prefix
+        
+        self.directory = self.prefix + '.d'
+        self.navpath = join(self.directory, 'nav.xhtml')
+        self.opfpath = join(self.directory, 'content.opf')
+        self.titlepagepath = join(self.directory, 'title_page.xhtml')
+        self.titles = []
+
+
+
+def fix_nav_file(wi):
     ET.register_namespace('', "http://www.w3.org/1999/xhtml")
     ET.register_namespace('epub', "http://www.idpf.org/2007/ops")
 
-    nt = ET.parse(NAVFILE)
+    nt = ET.parse(wi.navpath)
     ntr = nt.getroot()
     rewriteables = ntr.findall(".//{http://www.w3.org/1999/xhtml}span")
 
-    for elem, newname in zip(rewriteables, newnames):
-        elem.text = newname
+    for elem, new_title in zip(rewriteables, wi.titles):
+        elem.text = new_title
 
     titles = ntr.findall(".//{http://www.w3.org/1999/xhtml}h1")
     for title in titles:
         title.text = u"The Call of Cthulhu"
 
+    nt.write(wi.navpath)
 
-    nt.write(NAVFILE)
 
-fix_nav_file()
 
-def remove_title_page():
+def remove_title_page(wi):
     """
     Remove the title page and all references to it in the content.opf.
     """
     ET.register_namespace('', "http://www.idpf.org/2007/opf")
     ET.register_namespace('dc', "http://purl.org/dc/elements/1.1/")
     os.remove("call-of-cthulhu/title_page.xhtml")
-    opf = ET.parse(OPF)
+    opf = ET.parse(wi.opfpath)
     opfr = opf.getroot()
     
     for manifest in opfr.findall('.//{http://www.idpf.org/2007/opf}manifest'):
@@ -55,6 +55,18 @@ def remove_title_page():
         for deletable in opfr.findall('.//{http://www.idpf.org/2007/opf}itemref[@idref="title_page"]'):
             spine.remove(deletable)
     
-    opf.write(OPF)
-    
-#remove_title_page()
+    opf.write(wi.opfpath)
+
+
+
+coc = WorkInfo('call-of-cthulhu')
+coc.titles = [
+    u"The Call of Cthulhu",
+    u"1. The Horror in Clay",
+    u"2. The Tale of Inspector Legrasse",
+    u"3. The Madness from the Sea"
+]
+
+for wi in [coc]:
+    fix_nav_file(wi)
+    #remove_title_page(wi)
