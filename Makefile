@@ -6,7 +6,7 @@ epub:
 	pandoc \
 		--standalone \
 		--epub-chapter-level=2 \
-		--epub-metadata=dublin-core-metadata.xml \
+		--epub-metadata=${NAME}.dcmetadata.xml \
 		--epub-embed-font=kingsley.otf \
 		--epub-embed-font=alegreya-bolditalic.ttf \
 		--epub-embed-font=alegreya-italic.ttf \
