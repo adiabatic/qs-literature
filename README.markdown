@@ -19,6 +19,14 @@ H. P. Lovecraft’s most famous, transliterated by tim_rice09.
 - [python][] (2.7.2 or thereabouts)
 - (un)zip
 
-
 [pandoc]: http://johnmacfarlane.net/pandoc/
 [python]: http://www.python.org/
+
+
+## Testing in iTunes
+
+To push a new version of a book to your iDevice:
+
+- delete the book in iTunes
+- copy the newly-generated .epub to iTunes
+- sync
