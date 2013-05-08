@@ -4,5 +4,16 @@
         "1. The Horror in Clay",
         "2. The Tale of Inspector Legrasse",
         "3. The Madness from the Sea"
-    ]
+    ],
+    "author": "H. P. Lovecraft",
+    "author-sort": "Lovecraft, H. P.",
+    
+    
+    "year": "1926",
+    "contributors": [
+        "Tim Rice (transliterator)",
+        "Nathan Sharfi (ePub/HTML generation)"
+    ],
+    
+    "rights": "Public Domain"
 }

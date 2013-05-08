@@ -6,6 +6,7 @@ from os.path import join
 from shutil import copyfile
 import sys
 import json
+import codecs
 
 
 
@@ -19,15 +20,18 @@ class WorkInfo(object):
         self.titlepagepath = join(self.directory, 'title_page.xhtml')
         self.itmfilename = self.prefix + ".iTunesMetadata.plist"
         self.itmpath = join(self.directory, "iTunesMetadata.plist")
-        self.titles = []
-        
+        self.metadata = {}
+
         try:
             with open(self.prefix + '.json') as f:
-                titles = json.load(f).get('titles')
-                if titles:
-                    self.titles = titles
+                metadata = json.load(f)
+                if metadata:
+                    self.metadata = metadata
         except IOError as e:
             print "I/O error({}): {}".format(e.errno, e.strerror)
+                
+        self.titles = self.metadata.get('titles', [])
+        
 
 
 def fix_nav_file(wi):
@@ -44,8 +48,9 @@ def fix_nav_file(wi):
     for elem, new_title in zip(rewriteables, wi.titles):
         elem.text = new_title
 
-    for title in ntr.findall(".//{http://www.w3.org/1999/xhtml}h1"):
-        title.text = u"The Call of Cthulhu"
+    if wi.titles:
+        for title in ntr.findall(".//{http://www.w3.org/1999/xhtml}h1"):
+            title.text = wi.titles[0]
 
     nt.write(wi.navpath)
 
@@ -75,6 +80,26 @@ def remove_title_page(wi):
     opf.write(wi.opfpath)
 
 
+def generate_dc_metadata(wi):
+    ss = []
+    ins =  "author  year rights".split()
+    outs = "creator date rights".split()
+    
+    for i, o in zip(ins, outs):
+        ov = wi.metadata.get(i)
+        if ov:
+            ss.append(u"<dc:{}>{}</dc:{}>".format(o, ov, o))
+
+    contributors = wi.metadata.get('contributors', [])
+    for contributor in contributors:
+        ss.append(u"<dc:contributor>{}</dc:contributor>".format(contributor))  
+    
+    s = u'\n'.join(ss)
+    with codecs.open(wi.prefix + ".dcmetadata.xml", "w") as f:
+        f.write(s)
+      
+
+
 
 def add_itunes_metadata(wi):
     
@@ -101,6 +126,8 @@ def add_itunes_metadata(wi):
 
 for basename in sys.argv[1:]:
     wi = WorkInfo(basename)
+    
     fix_nav_file(wi)
+    remove_title_page(wi)
+    generate_dc_metadata(wi)
     add_itunes_metadata(wi)
-    #remove_title_page(wi)
