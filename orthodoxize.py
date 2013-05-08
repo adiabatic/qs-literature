@@ -4,6 +4,8 @@ import xml.etree.ElementTree as ET
 import os
 from os.path import join
 from shutil import copyfile
+import sys
+import json
 
 
 
@@ -18,10 +20,20 @@ class WorkInfo(object):
         self.itmfilename = self.prefix + ".iTunesMetadata.plist"
         self.itmpath = join(self.directory, "iTunesMetadata.plist")
         self.titles = []
-
+        
+        try:
+            with open(self.prefix + '.json') as f:
+                titles = json.load(f).get('titles')
+                if titles:
+                    self.titles = titles
+        except IOError as e:
+            print "I/O error({}): {}".format(e.errno, e.strerror)
 
 
 def fix_nav_file(wi):
+    """
+    Change the titles in nav.xhtml to Orthodox (listed in wi.titles)
+    """
     ET.register_namespace('', "http://www.w3.org/1999/xhtml")
     ET.register_namespace('epub', "http://www.idpf.org/2007/ops")
 
@@ -32,8 +44,7 @@ def fix_nav_file(wi):
     for elem, new_title in zip(rewriteables, wi.titles):
         elem.text = new_title
 
-    titles = ntr.findall(".//{http://www.w3.org/1999/xhtml}h1")
-    for title in titles:
+    for title in ntr.findall(".//{http://www.w3.org/1999/xhtml}h1"):
         title.text = u"The Call of Cthulhu"
 
     nt.write(wi.navpath)
@@ -85,19 +96,11 @@ def add_itunes_metadata(wi):
         manifest.append(itme)
         
     opf.write(wi.opfpath)
-        
-    
 
 
-coc = WorkInfo('call-of-cthulhu')
-coc.titles = [
-    u"The Call of Cthulhu",
-    u"1. The Horror in Clay",
-    u"2. The Tale of Inspector Legrasse",
-    u"3. The Madness from the Sea"
-]
 
-for wi in [coc]:
+for basename in sys.argv[1:]:
+    wi = WorkInfo(basename)
     fix_nav_file(wi)
     add_itunes_metadata(wi)
     #remove_title_page(wi)
