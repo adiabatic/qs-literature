@@ -1,5 +1,6 @@
 BASENAMES = call-of-cthulhu civil-disobedience
 
+.PHONY: all
 all: $(addsuffix .epub, $(BASENAMES)) $(addsuffix .html, $(BASENAMES)) 
 
 # $@: $<
