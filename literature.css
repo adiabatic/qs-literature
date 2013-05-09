@@ -43,26 +43,8 @@ blockquote {
     text-align: center;
 }
 
-@font-face {
-    font-family: Alegreya;
-    src: url(alegreya-bolditalic.ttf);
-    font-weight: bold;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: Alegreya;
-    src: url(alegreya-italic.ttf);
-    font-style: italic;
-}
-
 h1.title, 
 h2.author,
 h3.date {
-    font-family: Alegreya;
-    font-style: italic;
-}
-
-h1.title {
-    font-weight: bold;
+    font-weight: normal;
 }

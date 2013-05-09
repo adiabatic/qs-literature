@@ -5,8 +5,14 @@
         "2. The Tale of Inspector Legrasse",
         "3. The Madness from the Sea"
     ],
+    
+    "titles-qs": [
+        "   ·"
+    ],
+    
     "author": "H. P. Lovecraft",
     "author-sort": "Lovecraft, H. P.",
+    "author-qs": "·. . ",
     
     
     "year": "1926",
@@ -14,6 +20,6 @@
         "Tim Rice (transliterator)",
         "Nathan Sharfi (ePub/HTML generation)"
     ],
-    "genre": "Short Stories",
+    "genre": "Quikscript",
     "rights": "Public Domain"
 }

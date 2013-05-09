@@ -11,8 +11,8 @@ body > * {
     margin: 0 auto;
 }
 
-h1.title,
-h2.author,
-h3.date {
-    display: none;
+body > hgroup {
+    padding-bottom: 1em;
+    border-bottom: thin solid;
+    margin-bottom: 1em;
 }
