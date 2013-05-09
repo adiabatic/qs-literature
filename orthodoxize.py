@@ -107,6 +107,4 @@ for basename in sys.argv[1:]:
     wi = WorkInfo(basename)
     
     fix_nav_file(wi)
-#    remove_title_page(wi)
-    generate_dc_metadata(wi)
     add_itunes_metadata(wi)
