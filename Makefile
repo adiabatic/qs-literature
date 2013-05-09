@@ -6,14 +6,14 @@ all: $(addsuffix .epub, $(BASENAMES)) $(addsuffix .html, $(BASENAMES))
 # $@: $<
 
 %.unfinishedepub: %.markdown
+	python generate-dcmetadata.py $(basename $<)
 	pandoc \
-		--standalone \
 		--epub-chapter-level=2 \
 		--epub-metadata=$(basename $<).dcmetadata.xml \
 		--epub-embed-font=kingsley.otf \
-		--epub-embed-font=alegreya-bolditalic.ttf \
-		--epub-embed-font=alegreya-italic.ttf \
 		--epub-stylesheet=literature.css \
+		--variable='title:$(shell python jankyjson.py $(basename $<).json "titles-qs[0]")' \
+		--variable='author:$(shell python jankyjson.py $(basename $<).json "author-qs")' \
 		-t epub3 \
 		-o $@ \
 		$<
@@ -29,7 +29,10 @@ all: $(addsuffix .epub, $(BASENAMES)) $(addsuffix .html, $(BASENAMES))
 
 %.html: %.markdown
 	pandoc \
-		--standalone \
+		--template=TEMPLATE.html \
+		--variable='title:$(shell python jankyjson.py $(basename $<).json "titles-qs[0]")' \
+		--variable='pagetitle:$(shell python jankyjson.py $(basename $<).json "titles[0]")' \
+		--variable='author:$(shell python jankyjson.py $(basename $<).json "author-qs")' \
 		--section-divs \
 		--css=literature.css \
 		--css=webpage.css \
