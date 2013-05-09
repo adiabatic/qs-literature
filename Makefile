@@ -42,6 +42,7 @@ all: $(addsuffix .epub, $(BASENAMES)) $(addsuffix .html, $(BASENAMES))
 
 .PHONY: clean
 clean:
+	-rm    $(addsuffix .dcmetadata.xml,$(BASENAMES))
 	-rm    $(addsuffix .unfinishedepub,$(BASENAMES))
 	-rm -r $(addsuffix .d,$(BASENAMES))
 	-rm    $(addsuffix .zip,$(BASENAMES))
