@@ -4,7 +4,15 @@ Other people turn English prose into Quikscript. I then turn this prose into web
 
 ## Current Works
 
-### The Call of Cthulhu 
+### On the Duty of Civil Disobedience — Henry David Thoreau
+
+Quintessential Thoreau, transliterated by tim_rice09.
+
+- [On the Duty of Civil Disobedience as a webpage](http://adiabatic.github.io/qs-literature/civil-disobedience.html)
+- [On the Duty of Civil Disobedience as an ePub](http://adiabatic.github.io/qs-literature/civil-disobedience.epub)
+
+
+### The Call of Cthulhu — H. P. Lovecraft
 
 H. P. Lovecraft’s most famous, transliterated by tim_rice09.
 
