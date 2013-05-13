@@ -4,19 +4,6 @@
 }
 
 @font-face {
-    font-family: Alegreya;
-    src: url(alegreya-bolditalic.ttf);
-    font-weight: bold;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: Alegreya;
-    src: url(alegreya-italic.ttf);
-    font-style: italic;
-}
-
-@font-face {
     font-family: Putterbubble;
     src: url(Putterbubble-Regular.otf);
 }
