@@ -3,8 +3,26 @@
     src: url(kingsley.otf);
 }
 
+@font-face {
+    font-family: Alegreya;
+    src: url(alegreya-bolditalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Alegreya;
+    src: url(alegreya-italic.ttf);
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Putterbubble;
+    src: url(Putterbubble-Regular.otf);
+}
+
 html {
-    font: 14pt/2 Kingsley, sans-serif;
+    font: 14pt/2 Putterbubble "Open Sans", sans-serif;
 }
 
 body {
@@ -44,7 +62,11 @@ blockquote {
 }
 
 h1.title, 
-h2.author,
-h3.date {
-    font-weight: normal;
+h2.author {
+    font-family: Alegreya;
+    font-style: italic;
+}
+
+h1.title {
+    font-weight: bold;
 }
