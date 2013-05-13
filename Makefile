@@ -1,11 +1,20 @@
 BASENAMES = call-of-cthulhu civil-disobedience
+ASSETS = Makefile \
+			jankyjson.py \
+			orthodoxize.py \
+			workinfo.py \
+			generate-dcmetadata.py \
+			literature.css \
+			kingsley.otf
+ASSETS_EPUB = TEMPLATE.epub3.html
+ASSETS_HTML = TEMPLATE.html webpage.css
 
 .PHONY: all
 all: $(addsuffix .epub, $(BASENAMES)) $(addsuffix .html, $(BASENAMES)) 
 
 # $@: $<
 
-%.unfinishedepub: %.markdown
+%.unfinishedepub: %.markdown $(ASSETS) $(ASSETS_EPUB)
 	python generate-dcmetadata.py $(basename $<)
 	pandoc \
 		--epub-chapter-level=2 \
@@ -27,7 +36,7 @@ all: $(addsuffix .epub, $(BASENAMES)) $(addsuffix .html, $(BASENAMES))
 	mv $(basename $<).d/$(basename $<).zip $@
 
 
-%.html: %.markdown
+%.html: %.markdown $(ASSETS) $(ASSETS_HTML)
 	pandoc \
 		--template=TEMPLATE.html \
 		--variable='title:$(shell python jankyjson.py $(basename $<).json "titles-qs[0]")' \
