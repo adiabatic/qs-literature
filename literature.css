@@ -47,13 +47,3 @@ p + p {
 blockquote {
     text-align: center;
 }
-
-h1.title, 
-h2.author {
-    font-family: Alegreya;
-    font-style: italic;
-}
-
-h1.title {
-    font-weight: bold;
-}
