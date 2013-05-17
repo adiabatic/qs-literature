@@ -48,3 +48,8 @@ p + p {
 blockquote {
     text-align: center;
 }
+
+cite {
+    font-style: inherit;
+    text-decoration: underline;
+}
