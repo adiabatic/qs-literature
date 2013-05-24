@@ -6,6 +6,8 @@ jankyjson.py [file] [selector]
 
 """
 
+# Consider using <http://stedolan.github.io/jq/> for Serious Work™.
+
 import sys
 import json
 import re
