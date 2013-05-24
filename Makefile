@@ -1,7 +1,7 @@
 BASENAMES = call-of-cthulhu civil-disobedience
 ASSETS = Makefile \
 			jankyjson.py \
-			orthodoxize.py \
+			fixup.py \
 			workinfo.py \
 			generate-dcmetadata.py \
 			literature.css \
@@ -29,7 +29,7 @@ all: $(addsuffix .epub, $(BASENAMES)) $(addsuffix .html, $(BASENAMES))
 
 %.epub: %.unfinishedepub
 	unzip -o -d $(basename $<).d $<
-	python orthodoxize.py $(basename $<)
+	python fixup.py $(basename $<)
 	cd $(basename $<).d && \
 		zip -X0 $(basename $<).zip mimetype && \
 		zip -rDX9 $(basename $<).zip * -x "*.DS_Store" -x mimetype
