@@ -38,3 +38,5 @@ To push a new version of a book to your iDevice:
 - delete the book in iTunes
 - copy the newly-generated .epub to iTunes
 - sync
+
+This will delete all your highlights and probably your notes and bookmarks as well.
