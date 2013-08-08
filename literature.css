@@ -45,7 +45,17 @@ p + p {
     text-indent: .5in;
 }
 
-blockquote {
+blockquote:not(.newspaper-article) {
+    text-align: center;
+}
+
+blockquote.newspaper-article {
+    margin: .5em;
+    border: thin solid;
+    padding: .5em;
+}
+
+.newspaper-article-title {
     text-align: center;
 }
 
