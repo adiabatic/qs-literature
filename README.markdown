@@ -25,10 +25,12 @@ H. P. Lovecraft’s most famous, transliterated by tim_rice09.
 - make
 - [pandoc][] (1.11.1 or newer)
 - [python][] (2.7.2 or thereabouts)
+- [calibre][]
 - (un)zip
 
 [pandoc]: http://johnmacfarlane.net/pandoc/
 [python]: http://www.python.org/
+[calibre]: https://calibre-ebook.com/
 
 
 ## Testing in iTunes
