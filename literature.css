@@ -1,15 +1,17 @@
 @font-face {
     font-family: "Kingsley";
-    src: url(kingsley.otf);
+    src:url(kingsley.otf);
 }
 
+/*
 @font-face {
     font-family: Putterbubble;
-    src: url(Putterbubble-Regular.otf);
+    src:url(Putterbubble-Regular.otf);
 }
+*/
 
 html {
-    font: 14pt/2 Putterbubble, "Open Sans", sans-serif;
+    /* font: 14pt/2 Putterbubble, "Open Sans", sans-serif; */
     font: 14pt/2 Kingsley, sans-serif;
 }
 

@@ -1,3 +1,5 @@
 *.d
 /call-of-cthulhu.zip
 *.dcmetadata.xml
+*.swp
+*.pyc
